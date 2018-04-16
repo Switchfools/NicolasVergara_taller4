@@ -86,8 +86,8 @@ double** PolinomiodeLagrange(int n_datos,double** datos){
     return Matrix;
 }
 double** TransformadaFourier(int n_datos,double** datos){
-    double samplerate=(datos[0][0]-datos[n_datos-1][0])/(n_datos);
-    double* freq=linspace(0,samplerate,n_datos);
+    double samplerate=(datos[n_datos-1][0]-datos[0][0])/(n_datos);
+    double* freq=linspace(-samplerate/2,samplerate/2,n_datos);
     double* RTF = new double[n_datos];
     double* ITF = new double[n_datos];
     for(int i = 0; i < n_datos; i++)
@@ -115,7 +115,6 @@ double** TransformadaFourier(int n_datos,double** datos){
 int main () {
     int NDatos;
     NDatos=Number_data();
-    cout<< NDatos<<endl;
     double** Datos=DatatoMatrix(NDatos,2);
     double** interpolacion=PolinomiodeLagrange(NDatos,Datos);
     double** transform=TransformadaFourier(NDatos,interpolacion);
