@@ -33,7 +33,7 @@ double** DatatoMatrix(int Filas, int Columnas){
         Matrix[i] = new double[Columnas];
     }
     string line;
-    ifstream myfile ("First.txt");
+    ifstream myfile ("datos.txt");
     if (myfile.is_open())
     {
         int i=0;
@@ -96,7 +96,7 @@ double** TransformadaFourier(int n_datos,double** datos){
         for( int j = 0; j < n_datos-1; j++)
         {
             complex<double> arg(0.0, (M_PI/n_datos)*(-2)*j*i);
-            sum += datos[j][1]*exp(arg);
+            trans += datos[j][1]*exp(arg);
         }
         RTF[i]= trans.real();
         ITF[i]= trans.imag();
