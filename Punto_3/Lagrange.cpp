@@ -93,7 +93,7 @@ double** TransformadaFourier(int n_datos,double** datos){
     for(int i = 0; i < n_datos; i++)
     {
         complex<double> trans(0.0,0.0);
-        for( int j = 0; j < n_datos-1; j++)
+        for( int j = 0; j < n_datos; j++)
         {
             complex<double> arg(0.0, (M_PI/n_datos)*(-2)*j*i);
             trans += datos[j][1]*exp(arg);
