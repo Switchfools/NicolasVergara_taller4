@@ -56,7 +56,7 @@ X=np.array(range(SH[0]))
 Y=np.array(range(SH[1]))
 
 FT=Fourier2D(CanalR)
-filtrada=FT*FiltroPasaALtas(np.sqrt(SH[1]*SH[0])/8,X,Y)
+filtrada=FT*FiltroPasaALtas(np.sqrt(SH[1]*SH[0])/2,X,Y)
 Inv=np.real(InvFourier2D(filtrada))
 imageio.imwrite('altas.png',Inv)
 
