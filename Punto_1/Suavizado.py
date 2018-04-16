@@ -46,7 +46,7 @@ def Conc(R,G,B):
         for j in range(Shape[1]):
             Im[i,j]=np.array([R[i,j],G[i,j],B[i,j]])
     return (Im)
-Imagen=imageio.imread('vm.png')
+Imagen=imageio.imread('imagen.png')
 CanalR=Imagen[:,:,0]
 CanalG=Imagen[:,:,1]
 CanalB=Imagen[:,:,2]
@@ -55,12 +55,12 @@ X=np.array(range(SH[0]))
 Y=np.array(range(SH[1]))
 FTR=Fourier2D(CanalR)
 blurR=FTR*Gaussian2D(np.sqrt(SH[1]*SH[0]),X,Y)
-InvR=np.real(invFourier2D(blurR))
+InvR=np.real(InvFourier2D(blurR))
 FTG=Fourier2D(CanalG)
 blurG=FTG*Gaussian2D(np.sqrt(SH[1]*SH[0]),X,Y)
-InvG=np.real(invFourier2D(blurG))
+InvG=np.real(InvFourier2D(blurG))
 FTB=Fourier2D(CanalB)
 blurB=FTB*Gaussian2D(np.sqrt(SH[1]*SH[0]),X,Y)
-InvB=np.real(invFourier2D(blurB))
+InvB=np.real(InvFourier2D(blurB))
 imageio.imwrite('Suave.png',Conc(InvR,InvG,InvB))
 
