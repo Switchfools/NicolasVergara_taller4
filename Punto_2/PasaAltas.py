@@ -47,7 +47,7 @@ def Conc(R,G,B):
         for j in range(Shape[1]):
             Im[i,j]=np.array([R[i,j],G[i,j],B[i,j]])
     return (Im)
-Imagen=imageio.imread('vm.png')
+Imagen=imageio.imread('imagen.png')
 CanalR=Imagen[:,:,0]
 CanalG=Imagen[:,:,1]
 CanalB=Imagen[:,:,2]

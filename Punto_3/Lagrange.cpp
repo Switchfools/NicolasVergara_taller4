@@ -87,19 +87,19 @@ double** PolinomiodeLagrange(int n_datos,double** datos){
 }
 double** TransformadaFourier(int n_datos,double** datos){
     double samplerate=(datos[0][0]-datos[n_datos-1][0])/(n_datos);
-    double* freq=linspace(datos[0][0]*(samplerate/n_datos),datos[n_datos-1][0]*(samplerate/n_datos),n_datos);
+    double* freq=linspace(0,samplerate,n_datos);
     double* RTF = new double[n_datos];
     double* ITF = new double[n_datos];
     for(int i = 0; i < n_datos; i++)
     {
-        complex<double> sum(0.0,0.0);
-        for( int j = 0; j < n_datos; j++)
+        complex<double> trans(0.0,0.0);
+        for( int j = 0; j < n_datos-1; j++)
         {
-            complex<double> arg(0.0, M_PI/n_datos*(-2)*j*i);
-            sum += datos[j][1] *exp(arg);
+            complex<double> arg(0.0, (M_PI/n_datos)*(-2)*j*i);
+            sum += datos[j][1]*exp(arg);
         }
-        RTF[i]= sum.real();
-        ITF[i]= sum.imag();
+        RTF[i]= trans.real();
+        ITF[i]= trans.imag();
     }
     double **Matrix = new double*[n_datos];
     for(int i=0;i<n_datos;i++){
